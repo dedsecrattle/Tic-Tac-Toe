@@ -4,12 +4,12 @@ import GameBoard from "./components/GameBoard";
 
 function App() {
   return (
-    <>
+    <div style={{backgroundColor: 'teal', height: '100vh'}}>
       <Heading
         textAlign="center"
-        marginTop="10rem"
-        marginBottom="10rem"
-        color="brown"
+        paddingTop='3rem'
+        marginBottom="3rem"
+        color="white"
       >
         Tic Tac Toe
       </Heading>
@@ -17,15 +17,16 @@ function App() {
         direction="row"
         justifyContent="center"
         gap="15%"
-        backgroundColor="ghostwhite"
+        backgroundColor="teal"
         alignContent="center"
         marginX="25%"
+        paddingY='2rem'
       >
         <Player name="Player 1" />
         <Player name="Player 2" />
       </Flex>
       <GameBoard></GameBoard>
-    </>
+    </div>
   );
 }
 
