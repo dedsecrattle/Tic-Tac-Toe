@@ -1,31 +1,39 @@
-import { Flex, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading, useMediaQuery } from "@chakra-ui/react";
 import Player from "./components/Player";
 import GameBoard from "./components/GameBoard";
 
 function App() {
+  const [isSmallScreen] = useMediaQuery("(max-width: 950px)");
   return (
-    <div style={{backgroundColor: 'teal', display: Flex, justifyContent:"center", alignContent:'center', paddingRight:'1rem', paddingLeft:'1rem', margin: 'auto', marginTop: '5rem', borderRadius: '25px', boxShadow: '20px 20px 10px lightblue', paddingBottom:'2rem', maxWidth:'50%'}}>
-      <Heading
-        textAlign="center"
-        paddingTop='3rem'
-        color="white"
-        size='3xl'
-      >
+    <Box
+      bgColor="teal"
+      display="flex"
+      alignItems="center"
+      flexDirection="column"
+      justifyContent="center"
+      width={isSmallScreen ? "100%" : "50%"}
+      margin="auto"
+      height={isSmallScreen ? "100vh" : ""}
+      marginTop={isSmallScreen ? "0" : "6rem"}
+      borderRadius={isSmallScreen ? "0" : "20px"}
+      boxShadow="10px 10px 5px lightblue"
+      gap="3rem"
+    >
+      <Heading textAlign="center" paddingTop="3rem" color="white" size="3xl">
         Tic Tac Toe
       </Heading>
       <Flex
         direction="row"
         justifyContent="center"
-        gap="5rem"
-        backgroundColor="teal"
+        gap={isSmallScreen ? "2rem" : "5rem"}
         alignContent="center"
-        paddingY='2rem'
+        paddingY="1rem"
       >
         <Player name="Player 1" />
         <Player name="Player 2" />
       </Flex>
-      <GameBoard></GameBoard>
-    </div>
+      <GameBoard />
+    </Box>
   );
 }
 

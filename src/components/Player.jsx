@@ -41,14 +41,14 @@ const Player = ({ name }) => {
       textAlign="center"
       defaultValue={name}
       fontSize="2xl"
-      color='white'
-      border='solid 2px'
-      padding='1rem'
-      borderRadius='15px'
+      color="white"
+      border="solid 2px"
+      padding="0.75rem"
+      borderRadius="15px"
       isPreviewFocusable={false}
     >
       <EditablePreview />
-      <Input as={EditableInput} />
+      <Input fontSize="2xl" as={EditableInput} />
       <EditableControls />
     </Editable>
   );
