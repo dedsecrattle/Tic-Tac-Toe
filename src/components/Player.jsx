@@ -2,17 +2,18 @@ import {
   ButtonGroup,
   useEditableControls,
   IconButton,
-  Flex,
   Input,
   EditablePreview,
   Editable,
   EditableInput,
+  Text,
+  Box,
 } from "@chakra-ui/react";
 
 import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
 import { string } from "prop-types";
 
-const Player = ({ name }) => {
+const Player = ({ name, symbol }) => {
   function EditableControls() {
     const {
       isEditing,
@@ -37,20 +38,27 @@ const Player = ({ name }) => {
   }
 
   return (
-    <Editable
-      textAlign="center"
-      defaultValue={name}
-      fontSize="2xl"
-      color="white"
-      border="solid 2px"
+    <Box
+      border="solid 2px white"
       padding="0.75rem"
       borderRadius="15px"
-      isPreviewFocusable={false}
+      textAlign="center"
     >
-      <EditablePreview />
-      <Input fontSize="2xl" as={EditableInput} />
-      <EditableControls />
-    </Editable>
+      <Text fontSize="3xl" fontWeight="bold" color="white">
+        {symbol}
+      </Text>
+      <Editable
+        textAlign="center"
+        defaultValue={name}
+        fontSize="2xl"
+        color="white"
+        isPreviewFocusable={false}
+      >
+        <EditablePreview />
+        <Input fontSize="2xl" as={EditableInput} />
+        <EditableControls />
+      </Editable>
+    </Box>
   );
 };
 
@@ -58,4 +66,5 @@ export default Player;
 
 Player.propTypes = {
   name: string,
+  symbol: string,
 };

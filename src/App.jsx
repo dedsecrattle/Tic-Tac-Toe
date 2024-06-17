@@ -29,8 +29,8 @@ function App() {
         alignContent="center"
         paddingY="1rem"
       >
-        <Player name="Player 1" />
-        <Player name="Player 2" />
+        <Player name="Player 1" symbol="X" />
+        <Player name="Player 2" symbol="O" />
       </Flex>
       <GameBoard />
     </Box>
