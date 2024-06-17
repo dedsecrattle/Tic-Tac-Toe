@@ -41,10 +41,13 @@ const Player = ({ name }) => {
       textAlign="center"
       defaultValue={name}
       fontSize="2xl"
+      color='white'
+      border='solid 2px'
+      padding='1rem'
+      borderRadius='15px'
       isPreviewFocusable={false}
     >
       <EditablePreview />
-      {/* Here is the custom input */}
       <Input as={EditableInput} />
       <EditableControls />
     </Editable>

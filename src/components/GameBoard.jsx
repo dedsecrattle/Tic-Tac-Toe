@@ -24,7 +24,6 @@ export default function GameBoard() {
       justifyContent="center"
       gap="4"
       direction="column"
-      marginX='25%'
       backgroundColor='teal'
       paddingY='3rem'
     >
@@ -35,7 +34,7 @@ export default function GameBoard() {
               height: "100px",
               width: "100px",
               padding: "0 24px",
-            }} fontSize='30px' key={`${rowIdx}${colIdx}`} colorScheme="red" onClick={() => handleClick(rowIdx, colIdx)}>
+            }} fontSize='30px' color= 'teal' bgColor='whitesmoke' key={`${rowIdx}${colIdx}`} onClick={() => handleClick(rowIdx, colIdx)} shadow=''>
               {gameBoard[rowIdx][colIdx] == null
                 ? ""
                 : gameBoard[rowIdx][colIdx]}
