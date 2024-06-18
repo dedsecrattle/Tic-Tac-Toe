@@ -1,6 +1,7 @@
 import { Box, Flex, Heading, useMediaQuery } from "@chakra-ui/react";
 import Player from "./components/Player";
 import GameBoard from "./components/GameBoard";
+import { useState } from "react";
 
 function App() {
   const [isSmallScreen] = useMediaQuery("(max-width: 950px)");

@@ -59,7 +59,7 @@ export default function GameBoard() {
               fontSize="35px"
               fontWeight="bold"
               color="teal"
-              fontFamily="cursive"
+              fontFamily="sans-serif"
               boxShadow="5px 5px 3px #3d3d3d"
               bgColor="whitesmoke"
               key={`${rowIdx}${colIdx}`}
