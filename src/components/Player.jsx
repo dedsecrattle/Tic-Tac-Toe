@@ -10,6 +10,7 @@ import {
   Box,
   Avatar,
   Flex,
+  useMediaQuery,
 } from "@chakra-ui/react";
 
 import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
@@ -18,6 +19,7 @@ import { PlayerContext } from "../store/player-context";
 import { useContext } from "react";
 
 const Player = ({ symbol }) => {
+  const [isSmallScreen] = useMediaQuery("(max-width: 950px)");
   const { players, scores, updateX, updateO, onClose } =
     useContext(PlayerContext);
 
@@ -37,7 +39,7 @@ const Player = ({ symbol }) => {
     ) : (
       <IconButton
         size="sm"
-        marginLeft="2rem"
+        marginLeft={isSmallScreen ? "0.5rem" : "2rem"}
         icon={<EditIcon />}
         {...getEditButtonProps()}
       />
@@ -47,21 +49,34 @@ const Player = ({ symbol }) => {
   return (
     <Box
       border="solid 2px white"
-      padding="0.75rem"
-      borderRadius="15px"
+      padding={isSmallScreen ? "0.85rem" : "1.5rem"}
+      borderRadius="2rem"
       textAlign="center"
     >
-      <Text fontSize="3xl" fontWeight="bold" color="white">
+      <Text
+        fontSize={isSmallScreen ? "xl" : "3xl"}
+        fontWeight="bold"
+        color="white"
+      >
         {symbol}
       </Text>
-      <Text fontSize="3xl" fontWeight="bold" color="white">
+      <Text
+        fontSize={isSmallScreen ? "xl" : "3xl"}
+        fontWeight="bold"
+        color="white"
+      >
         {`Score - ${symbol === "X" ? scores[0] : scores[1]}`}
       </Text>
-      <Flex gap="1rem">
+      <Flex
+        gap={isSmallScreen ? "0.5rem" : "1rem"}
+        justifyContent="center"
+        align="center"
+      >
         <Avatar
           name={symbol === "X" ? players[0] : players[1]}
           color="teal"
           bgColor="white"
+          size={isSmallScreen ? "sm" : "md"}
         />
         <Editable
           textAlign="center"
@@ -72,7 +87,7 @@ const Player = ({ symbol }) => {
           onSubmit={(newValue) => {
             onClose();
           }}
-          fontSize="2xl"
+          fontSize={isSmallScreen ? "xl" : "2xl"}
           color="white"
           isPreviewFocusable={false}
         >

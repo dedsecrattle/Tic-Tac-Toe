@@ -64,13 +64,13 @@ function App() {
         justifyContent="center"
         width={isSmallScreen ? "100%" : "50%"}
         margin="auto"
-        height={isSmallScreen ? "100%" : ""}
-        marginTop={isSmallScreen ? "0" : "6rem"}
+        minHeight={isSmallScreen ? "100%" : ""}
+        marginTop={isSmallScreen ? "0" : "4.5rem"}
         borderRadius={isSmallScreen ? "0" : "20px"}
         boxShadow="10px 10px 5px lightblue"
         gap="3rem"
       >
-        <Heading textAlign="center" paddingTop="3rem" color="white" size="3xl">
+        <Heading textAlign="center" paddingTop="2rem" color="white" size="3xl">
           Tic Tac Toe
         </Heading>
         <Flex
@@ -79,6 +79,7 @@ function App() {
           gap={isSmallScreen ? "2rem" : "5rem"}
           alignContent="center"
           paddingY="1rem"
+          paddingX="1rem"
         >
           <Player name={data.players[0]} symbol="X" />
           <Player name={data.players[1]} symbol="O" />

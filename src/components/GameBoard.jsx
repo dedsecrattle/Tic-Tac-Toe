@@ -48,7 +48,7 @@ export default function GameBoard() {
       justifyContent="center"
       gap="4"
       direction="column"
-      paddingY="3rem"
+      paddingBottom="3rem"
     >
       {gameBoard.map((row, rowIdx) => (
         <Flex gap="4" key={rowIdx} justifyContent="center">
