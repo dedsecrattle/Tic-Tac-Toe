@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -11,9 +11,14 @@ import {
   Text,
 } from "@chakra-ui/react";
 
+import { PlayerContext } from "../store/player-context";
+
 const GameOverModal = ({ isOpen, onClose, winner }) => {
+  const { players } = useContext(PlayerContext);
   const isWin = winner !== "draw";
-  const resultText = isWin ? `${winner} wins!` : "It's a draw!";
+  const resultText = isWin
+    ? `${winner === "X" ? players[0] : players[1]} wins!`
+    : "It's a draw!";
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
@@ -27,7 +32,11 @@ const GameOverModal = ({ isOpen, onClose, winner }) => {
             <Text fontSize="2xl" fontWeight="bold" mb={4}>
               {resultText}
             </Text>
-            {isWin && <Text>Congratulations, {winner}!</Text>}
+            {isWin && (
+              <Text>
+                Congratulations, {winner === "X" ? players[0] : players[1]}!
+              </Text>
+            )}
           </Flex>
         </ModalBody>
         <ModalFooter>

@@ -12,8 +12,12 @@ import {
 
 import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
 import { string } from "prop-types";
+import { PlayerContext } from "../store/player-context";
+import { useContext } from "react";
 
 const Player = ({ name, symbol }) => {
+  const { updateX, updateO } = useContext(PlayerContext);
+
   function EditableControls() {
     const {
       isEditing,
@@ -50,6 +54,9 @@ const Player = ({ name, symbol }) => {
       <Editable
         textAlign="center"
         defaultValue={name}
+        onChange={(newValue) =>
+          symbol === "X" ? updateX(newValue) : updateO(newValue)
+        }
         fontSize="2xl"
         color="white"
         isPreviewFocusable={false}
