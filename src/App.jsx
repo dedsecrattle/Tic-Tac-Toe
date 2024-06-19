@@ -4,11 +4,6 @@ import GameBoard from "./components/GameBoard";
 import { PlayerContext } from "./store/player-context";
 import { useState } from "react";
 
-const INITIAL_DATA = {
-  players: ["Player 1", "Player 2"],
-  scores: [0, 0],
-};
-
 function App() {
   const [isSmallScreen] = useMediaQuery("(max-width: 950px)");
   const [data, setData] = useState({
