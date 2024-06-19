@@ -11,7 +11,7 @@ const initialBoard = [
 ];
 
 export default function GameBoard() {
-  const { updateScore } = useContext(PlayerContext);
+  const { onClose, updateScore } = useContext(PlayerContext);
   function handleClick(rowIdx, colIdx) {
     const updatedBoard = [...gameBoard.map((item) => [...item])];
     updatedBoard[rowIdx][colIdx] = isX ? "X" : "O";
@@ -39,6 +39,7 @@ export default function GameBoard() {
     updateScore(winner);
     setGameBoard(() => [...initialBoard.map((item) => [...item])]);
     setWinner(null);
+    onClose();
   }
 
   return (

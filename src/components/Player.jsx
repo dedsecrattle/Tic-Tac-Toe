@@ -18,6 +18,7 @@ import { useContext } from "react";
 const Player = ({ name, symbol }) => {
   const { scores, updateX, updateO } = useContext(PlayerContext);
 
+
   function EditableControls() {
     const {
       isEditing,

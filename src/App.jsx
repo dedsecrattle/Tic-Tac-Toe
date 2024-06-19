@@ -4,42 +4,54 @@ import GameBoard from "./components/GameBoard";
 import { PlayerContext } from "./store/player-context";
 import { useState } from "react";
 
+const INITIAL_DATA = {
+  players: ["Player 1", "Player 2"],
+  scores: [0, 0],
+};
+
 function App() {
   const [isSmallScreen] = useMediaQuery("(max-width: 950px)");
-  const [players, setPlayers] = useState(["Player 1", "Player 2"]);
-  const [scores, setScores] = useState([0, 0]);
+  const [data, setData] = useState({
+    players: ["Player 1", "Player 2"],
+    scores: [0, 0],
+  });
+
+  function onClose() {
+    setData({ ...INITIAL_DATA });
+  }
 
   function handleX(newName) {
-    setPlayers((players) => {
-      players[0] = newName;
-      return players;
+    setData((prevData) => {
+      prevData.players[0] = newName;
+      return prevData;
     });
   }
 
   function handleO(newName) {
-    setPlayers((players) => {
-      players[1] = newName;
-      return players;
+    setData((prevData) => {
+      prevData.players[1] = newName;
+      return prevData;
     });
   }
 
   function handleScoreUpdate(symbol) {
-    setScores((scores) => {
+    setData((prevData) => {
       if (symbol === "X") {
-        scores[0] = scores[0] + 1;
+        prevData.scores[0] += 1;
       } else if (symbol === "O") {
-        scores[1] = scores[1] + 1;
+        prevData.scores[1] += 1;
       }
-      return scores;
+      return prevData;
     });
   }
 
   const value = {
-    players: players,
-    scores: scores,
+    players: data.players,
+    scores: data.scores,
     updateX: handleX,
     updateO: handleO,
     updateScore: handleScoreUpdate,
+    onClose: onClose,
   };
 
   return (
@@ -68,8 +80,8 @@ function App() {
           alignContent="center"
           paddingY="1rem"
         >
-          <Player name={players[0]} symbol="X" />
-          <Player name={players[1]} symbol="O" />
+          <Player name={data.players[0]} symbol="X" />
+          <Player name={data.players[1]} symbol="O" />
         </Flex>
         <GameBoard />
       </Box>

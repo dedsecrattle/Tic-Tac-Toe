@@ -6,6 +6,7 @@ const PlayerContext = createContext({
   updateX: () => {},
   updateO: () => {},
   updateScore: () => {},
+  onClose: () => {},
 });
 
 export { PlayerContext };
