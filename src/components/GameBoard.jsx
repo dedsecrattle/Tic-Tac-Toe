@@ -1,4 +1,4 @@
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { Button, Flex, Text, useMediaQuery } from "@chakra-ui/react";
 import { useContext, useState } from "react";
 import { checkWinner } from "../utils/utils";
 import GameOverModal from "./GameOver";
@@ -11,6 +11,7 @@ const initialBoard = [
 ];
 
 export default function GameBoard() {
+  const [isSmallScreen] = useMediaQuery("(max-width: 950px)");
   const { onClose, updateScore } = useContext(PlayerContext);
   function handleClick(rowIdx, colIdx) {
     const updatedBoard = [...gameBoard.map((item) => [...item])];
@@ -55,8 +56,8 @@ export default function GameBoard() {
           {row.map((col, colIdx) => (
             <Button
               style={{
-                height: "100px",
-                width: "100px",
+                height: isSmallScreen ? "85px" : "100px",
+                width: isSmallScreen ? "85px" : "100px",
                 padding: "0 24px",
               }}
               fontSize="35px"

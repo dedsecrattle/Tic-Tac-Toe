@@ -21,27 +21,38 @@ const GameOverModal = ({ isOpen, onClose, winner }) => {
     : "It's a draw!";
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="xl">
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      size="4xl"
+      isCentered={true}
+      closeOnOverlayClick={false}
+    >
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader fontSize="20px" textAlign="center">
+        <ModalHeader
+          fontWeight="bold"
+          fontSize="4xl"
+          textAlign="center"
+          color="teal"
+        >
           Game Over
         </ModalHeader>
         <ModalBody>
           <Flex direction="column" align="center">
-            <Text fontSize="2xl" fontWeight="bold" mb={4}>
+            <Text fontSize="3xl" fontWeight="bold" mb={4} color="teal">
               {resultText}
             </Text>
             {isWin && (
-              <Text>
-                Congratulations, {winner === "X" ? players[0] : players[1]}!
+              <Text fontSize="xl" fontWeight="bold" mb={4} color="teal">
+                Congratulations, {winner === "X" ? players[0] : players[1]}
               </Text>
             )}
           </Flex>
         </ModalBody>
         <ModalFooter>
-          <Button colorScheme="blue" mr={3} onClick={onClose}>
-            Close
+          <Button bgColor="teal" color="white" mr={3} onClick={onClose}>
+            Play Again
           </Button>
         </ModalFooter>
       </ModalContent>
