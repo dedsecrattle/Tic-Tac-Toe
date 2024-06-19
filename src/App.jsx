@@ -17,7 +17,12 @@ function App() {
   });
 
   function onClose() {
-    setData({ ...INITIAL_DATA });
+    setData((prevData) => {
+      const updatedData = {
+        ...prevData,
+      };
+      return updatedData;
+    });
   }
 
   function handleX(newName) {
