@@ -64,7 +64,7 @@ function App() {
         justifyContent="center"
         width={isSmallScreen ? "100%" : "50%"}
         margin="auto"
-        height={isSmallScreen ? "100vh" : ""}
+        height={isSmallScreen ? "100%" : ""}
         marginTop={isSmallScreen ? "0" : "6rem"}
         borderRadius={isSmallScreen ? "0" : "20px"}
         boxShadow="10px 10px 5px lightblue"
