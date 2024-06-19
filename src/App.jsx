@@ -8,8 +8,6 @@ function App() {
   const [isSmallScreen] = useMediaQuery("(max-width: 950px)");
   const [players, setPlayers] = useState(["Player1", "Player2"]);
 
-  console.log(players);
-
   function handleX(newName) {
     setPlayers((players) => {
       players[0] = newName;
