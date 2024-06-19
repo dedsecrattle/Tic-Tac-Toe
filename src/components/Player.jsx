@@ -16,7 +16,7 @@ import { PlayerContext } from "../store/player-context";
 import { useContext } from "react";
 
 const Player = ({ name, symbol }) => {
-  const { updateX, updateO } = useContext(PlayerContext);
+  const { scores, updateX, updateO } = useContext(PlayerContext);
 
   function EditableControls() {
     const {
@@ -50,6 +50,9 @@ const Player = ({ name, symbol }) => {
     >
       <Text fontSize="3xl" fontWeight="bold" color="white">
         {symbol}
+      </Text>
+      <Text fontSize="3xl" fontWeight="bold" color="white">
+        {`Score - ${symbol === "X" ? scores[0] : scores[1]}`}
       </Text>
       <Editable
         textAlign="center"

@@ -6,7 +6,8 @@ import { useState } from "react";
 
 function App() {
   const [isSmallScreen] = useMediaQuery("(max-width: 950px)");
-  const [players, setPlayers] = useState(["Player1", "Player2"]);
+  const [players, setPlayers] = useState(["Player 1", "Player 2"]);
+  const [scores, setScores] = useState([0, 0]);
 
   function handleX(newName) {
     setPlayers((players) => {
@@ -22,10 +23,23 @@ function App() {
     });
   }
 
+  function handleScoreUpdate(symbol) {
+    setScores((scores) => {
+      if (symbol === "X") {
+        scores[0] = scores[0] + 1;
+      } else if (symbol === "O") {
+        scores[1] = scores[1] + 1;
+      }
+      return scores;
+    });
+  }
+
   const value = {
     players: players,
+    scores: scores,
     updateX: handleX,
     updateO: handleO,
+    updateScore: handleScoreUpdate,
   };
 
   return (

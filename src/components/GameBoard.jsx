@@ -1,7 +1,8 @@
 import { Button, Flex, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { checkWinner } from "../utils/utils";
 import GameOverModal from "./GameOver";
+import { PlayerContext } from "../store/player-context";
 
 const initialBoard = [
   [null, null, null],
@@ -10,6 +11,7 @@ const initialBoard = [
 ];
 
 export default function GameBoard() {
+  const { updateScore } = useContext(PlayerContext);
   function handleClick(rowIdx, colIdx) {
     const updatedBoard = [...gameBoard.map((item) => [...item])];
     updatedBoard[rowIdx][colIdx] = isX ? "X" : "O";
@@ -24,12 +26,6 @@ export default function GameBoard() {
     });
   }
 
-  function handleClose() {
-    setGameBoard(() => [...initialBoard.map((item) => [...item])]);
-    setWinner(null);
-    setIsX(true);
-  }
-
   const [gameBoard, setGameBoard] = useState([
     ...initialBoard.map((item) => [...item]),
   ]);
@@ -38,6 +34,12 @@ export default function GameBoard() {
 
   const isWin = winner === "X" || winner === "O";
   const isDraw = winner === "draw";
+
+  function handleClose() {
+    updateScore(winner);
+    setGameBoard(() => [...initialBoard.map((item) => [...item])]);
+    setWinner(null);
+  }
 
   return (
     <Flex
