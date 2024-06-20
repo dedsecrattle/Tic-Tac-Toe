@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, useMediaQuery } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, useMediaQuery } from "@chakra-ui/react";
 import Player from "./components/Player";
 import GameBoard from "./components/GameBoard";
 import { PlayerContext } from "./store/player-context";
@@ -39,6 +39,13 @@ function App() {
     localStorage.setItem("p2", newName);
   }
 
+  function handleResetScore() {
+    setData((prevData) => {
+      const updatedData = { ...prevData, scores: [0, 0] };
+      return updatedData;
+    });
+  }
+
   function handleScoreUpdate(symbol) {
     setData((prevData) => {
       if (symbol === "X") {
@@ -73,16 +80,19 @@ function App() {
         marginTop={isSmallScreen ? "0" : "4.5rem"}
         borderRadius={isSmallScreen ? "0" : "20px"}
         boxShadow="10px 10px 5px lightblue"
-        gap="3rem"
+        gap="1.5rem"
       >
         <Heading textAlign="center" paddingTop="2rem" color="white" size="3xl">
           Tic Tac Toe
         </Heading>
+        <Button color="teal" onClick={handleResetScore}>
+          Reset Scores
+        </Button>
         <Flex
           direction="row"
           justifyContent="center"
           gap={isSmallScreen ? "2rem" : "5rem"}
-          alignContent="center"
+          alignItems="center"
           paddingY="1rem"
           paddingX="1rem"
         >
