@@ -9,7 +9,9 @@ import {
   Button,
   Flex,
   Text,
+  Icon,
 } from "@chakra-ui/react";
+import { FaTrophy } from "react-icons/fa";
 
 import { PlayerContext } from "../store/player-context";
 
@@ -44,9 +46,17 @@ const GameOverModal = ({ isOpen, onClose, winner }) => {
               {resultText}
             </Text>
             {isWin && (
-              <Text fontSize="xl" fontWeight="bold" mb={4} color="teal">
-                Congratulations, {winner === "X" ? players[0] : players[1]}
-              </Text>
+              <Flex alignContent="center" justifyContent="center">
+                <Icon
+                  as={FaTrophy}
+                  marginRight="10px"
+                  boxSize="35px"
+                  color="teal"
+                />
+                <Text fontSize="xl" fontWeight="bold" mb={4} color="teal">
+                  Congratulations, {winner === "X" ? players[0] : players[1]}
+                </Text>
+              </Flex>
             )}
           </Flex>
         </ModalBody>
