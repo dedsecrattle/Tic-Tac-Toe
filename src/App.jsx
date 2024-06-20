@@ -7,7 +7,10 @@ import { useState } from "react";
 function App() {
   const [isSmallScreen] = useMediaQuery("(max-width: 950px)");
   const [data, setData] = useState({
-    players: ["Player 1", "Player 2"],
+    players: [
+      localStorage.getItem("p1") || "Player 1",
+      localStorage.getItem("p2") || "Player 2",
+    ],
     scores: [0, 0],
   });
 
@@ -25,6 +28,7 @@ function App() {
       prevData.players[0] = newName;
       return prevData;
     });
+    localStorage.setItem("p1", newName);
   }
 
   function handleO(newName) {
@@ -32,6 +36,7 @@ function App() {
       prevData.players[1] = newName;
       return prevData;
     });
+    localStorage.setItem("p2", newName);
   }
 
   function handleScoreUpdate(symbol) {
