@@ -11,7 +11,7 @@ function App() {
       localStorage.getItem("p1") || "Player 1",
       localStorage.getItem("p2") || "Player 2",
     ],
-    scores: [0, 0],
+    scores: [localStorage.getItem("s1") || 0, localStorage.getItem("s2") || 0],
   });
 
   function onClose() {
@@ -50,8 +50,10 @@ function App() {
     setData((prevData) => {
       if (symbol === "X") {
         prevData.scores[0] += 1;
+        localStorage.setItem("s1", prevData.scores[0]);
       } else if (symbol === "O") {
         prevData.scores[1] += 1;
+        localStorage.setItem("s2", prevData.scores[1]);
       }
       return prevData;
     });
