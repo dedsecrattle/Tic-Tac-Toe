@@ -44,6 +44,8 @@ function App() {
       const updatedData = { ...prevData, scores: [0, 0] };
       return updatedData;
     });
+    localStorage.setItem("s1", 0);
+    localStorage.setItem("s2", 0);
   }
 
   function handleScoreUpdate(symbol) {
@@ -51,8 +53,10 @@ function App() {
       if (symbol === "X") {
         prevData.scores[0] += 1;
         localStorage.setItem("s1", prevData.scores[0]);
+        localStorage.setItem("s2", prevData.scores[1]);
       } else if (symbol === "O") {
         prevData.scores[1] += 1;
+        localStorage.setItem("s1", prevData.scores[0]);
         localStorage.setItem("s2", prevData.scores[1]);
       }
       return prevData;
