@@ -41,6 +41,7 @@ export default function GameBoard() {
     setGameBoard(() => [...initialBoard.map((item) => [...item])]);
     setWinner(null);
     onClose();
+    setIsX(true);
   }
 
   return (

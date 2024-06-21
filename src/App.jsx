@@ -11,7 +11,10 @@ function App() {
       localStorage.getItem("p1") || "Player 1",
       localStorage.getItem("p2") || "Player 2",
     ],
-    scores: [localStorage.getItem("s1") || 0, localStorage.getItem("s2") || 0],
+    scores: [
+      Number(localStorage.getItem("s1")) || 0,
+      Number(localStorage.getItem("s2")) || 0,
+    ],
   });
 
   function onClose() {
@@ -85,7 +88,7 @@ function App() {
         minHeight={isSmallScreen ? "100vh" : ""}
         marginTop={isSmallScreen ? "0" : "4.5rem"}
         borderRadius={isSmallScreen ? "0" : "20px"}
-        boxShadow="10px 10px 5px lightblue"
+        boxShadow="15px 15px 10px gray"
         gap="1.5rem"
       >
         <Heading textAlign="center" paddingTop="2rem" color="white" size="3xl">
